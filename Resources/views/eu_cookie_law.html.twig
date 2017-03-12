@@ -1,0 +1,37 @@
+{% spaceless %}{% trans_default_domain 'EUCookieLaw' %}
+<div id="eu-cookie-law" class="eu-cookie-law">
+    {{ 'cookie_law.message'|trans }}
+    <button id="eu-cookie-law-accept" class="eu-cookie-law-accept">{{ 'cookie_law.accept'|trans }}</button>
+</div>
+<style>
+    .eu-cookie-law {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        font-size: 0.7em;
+        color: white;
+        padding: 0.3em;
+    }
+    .eu-cookie-law-accept {
+        background: none;
+        border: 0;
+        text-decoration: underline;
+    }
+</style>
+<script type="text/javascript">
+    (function () {
+        document.getElementById('eu-cookie-law-accept').addEventListener('click', function () {
+            // remove div
+            var child = document.getElementById('eu-cookie-law');
+            child.parentElement.removeChild(child);
+
+            // add cookie
+            var  date = new Date();
+            date.setFullYear(date.getFullYear() + 10);
+            document.cookie = '{{ cookie_name }}={{ cookie_value }}; expires=' + date.toUTCString() + '; path=/';
+        });
+    })();
+</script>{% endspaceless %}

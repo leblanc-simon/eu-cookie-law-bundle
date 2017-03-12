@@ -1,0 +1,21 @@
+{
+    "name": "leblanc-simon/eu-cookie-law-bundle",
+    "type": "symfony-bundle",
+    "description": "Add the cookie div explanation according to EU law",
+    "license": "MIT",
+    "authors": [{
+        "name": "Simon Leblanc",
+        "email": "contact@leblanc-simon.eu",
+        "homepage": "http://www.leblanc-simon.fr",
+        "role": "Developer"
+    }],
+    "autoload": {
+        "psr-4": {
+            "LeblancSimon\\EUCookieLawBundle": ""
+        }
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/framework-bundle": "^2.8|^3"
+    }
+}
