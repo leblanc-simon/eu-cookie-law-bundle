@@ -2,6 +2,11 @@
 <div id="eu-cookie-law" class="eu-cookie-law">
     {{ 'cookie_law.message'|trans }}
     <button id="eu-cookie-law-accept" class="eu-cookie-law-accept">{{ 'cookie_law.accept'|trans }}</button>
+    {% if cookie_read_more_link is not null %}
+        <a href="{{ path(cookie_read_more_link) }}" id="eu-cookie-law-read-more" class="eu-cookie-law-accept">
+            {{ 'cookie_law.read_more'|trans }}
+        </a>
+    {% endif %}
 </div>
 <style>
     .eu-cookie-law {
@@ -15,6 +20,13 @@
         color: white;
         padding: 0.3em;
     }
+    .eu-cookie-law a{
+        color: white;
+    }
+    .eu-cookie-law a:hover, a:active, a:focus{
+        color: white;
+        text-decoration: underline;
+    }
     .eu-cookie-law-accept {
         background: none;
         border: 0;
@@ -23,8 +35,10 @@
 </style>
 <script type="text/javascript">
     (function () {
-        document.getElementById('eu-cookie-law-accept').addEventListener('click', function () {
-            // remove div
+        document.getElementById('eu-cookie-law-accept').addEventListener('click', resetCookie);
+        document.getElementById('eu-cookie-law-read-more').addEventListener('click', resetCookie);
+
+        function resetCookie(){
             var child = document.getElementById('eu-cookie-law');
             child.parentElement.removeChild(child);
 
@@ -32,6 +46,6 @@
             var  date = new Date();
             date.setFullYear(date.getFullYear() + 10);
             document.cookie = '{{ cookie_name }}={{ cookie_value }}; expires=' + date.toUTCString() + '; path=/';
-        });
+        }
     })();
 </script>{% endspaceless %}
