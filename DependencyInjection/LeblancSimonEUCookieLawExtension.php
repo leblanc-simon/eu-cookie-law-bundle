@@ -29,6 +29,7 @@ class LeblancSimonEUCookieLawExtension extends Extension
         $container->setParameter('eu_cookie_law.cookie_name', $config['cookie_name']);
         $container->setParameter('eu_cookie_law.cookie_value', $config['cookie_value']);
         $container->setParameter('eu_cookie_law.template', $config['template']);
+        $container->setParameter('eu_cookie_law.read_more_link', $config['read_more_link']);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

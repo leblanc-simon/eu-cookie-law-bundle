@@ -45,6 +45,7 @@ cookie_law:
         Afin de vous proposer le meilleur service possible, ce site utilise des cookies.
         En acceptant de continuer sur ce site, vous déclarer accepter leur utilisation.
     accept: J'accepte
+    read_more: Voir plus
 ```
 
 ### Design
@@ -72,5 +73,6 @@ leblanc_simon_eu_cookie_law:
     cookie_value: accept
     # The template use to show the message
     template: 'LeblancSimonEUCookieLawBundle::eu_cookie_law.html.twig'
-
+    # The name of route to be open
+    read_more_link: name_to_route
 ```

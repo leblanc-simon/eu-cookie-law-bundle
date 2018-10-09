@@ -44,13 +44,15 @@ class EUCookieLawTemplate
      * @param $template_name
      * @param $cookie_name
      * @param $cookie_value
+     * @param $read_more_link
      */
-    public function __construct(TwigEngine $templating, $template_name, $cookie_name, $cookie_value)
+    public function __construct(TwigEngine $templating, $template_name, $cookie_name, $cookie_value, $read_more_link)
     {
         $this->templating = $templating;
         $this->template_name = $template_name;
         $this->cookie_name = $cookie_name;
         $this->cookie_value = $cookie_value;
+        $this->read_more_link = $read_more_link;
     }
 
     /**
@@ -68,6 +70,7 @@ class EUCookieLawTemplate
         $render_template = $this->templating->render($this->template_name, [
             'cookie_name' => $this->cookie_name,
             'cookie_value' => $this->cookie_value,
+            'cookie_read_more_link' => $this->read_more_link
         ]);
 
         $content = $response->getContent();

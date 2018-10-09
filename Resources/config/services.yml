@@ -1,16 +1,17 @@
 services:
-    eucookielaw.injector.template:
-        class: LeblancSimon\EUCookieLawBundle\Injector\EUCookieLawTemplate
-        arguments:
-            - "@templating"
-            - "%eu_cookie_law.template%"
-            - "%eu_cookie_law.cookie_name%"
-            - "%eu_cookie_law.cookie_value%"
-        public: false
+  eucookielaw.injector.template:
+    class: LeblancSimon\EUCookieLawBundle\Injector\EUCookieLawTemplate
+    arguments:
+      - "@templating"
+      - "%eu_cookie_law.template%"
+      - "%eu_cookie_law.cookie_name%"
+      - "%eu_cookie_law.cookie_value%"
+      - "%eu_cookie_law.read_more_link%"
+    public: false
 
-    eucookielaw.reponse.listener:
-        class: LeblancSimon\EUCookieLawBundle\EventSubscriber\EUCookieLawDivSubscriber
-        arguments: ["@eucookielaw.injector.template"]
-        public: true
-        tags:
-            - { name: kernel.event_subscriber }
+  eucookielaw.reponse.listener:
+    class: LeblancSimon\EUCookieLawBundle\EventSubscriber\EUCookieLawDivSubscriber
+    arguments: ["@eucookielaw.injector.template"]
+    public: true
+    tags:
+      - { name: kernel.event_subscriber }
