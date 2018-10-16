@@ -23,8 +23,14 @@
 </style>
 <script type="text/javascript">
     (function () {
-        document.getElementById('eu-cookie-law-accept').addEventListener('click', function () {
-            // remove div
+        if(document.cookie.includes("{{ cookie_name }}"))
+        {
+                document.getElementById("eu-cookie-law").remove();
+        }
+        document.getElementById('eu-cookie-law-accept').addEventListener('click', resetCookie);
+        document.getElementById('eu-cookie-law-read-more').addEventListener('click', resetCookie);
+
+        function resetCookie(){
             var child = document.getElementById('eu-cookie-law');
             child.parentElement.removeChild(child);
 
